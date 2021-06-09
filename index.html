@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intersection</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    <section>
+
+    </section>
+    <section class="content">
+        <div class="left">
+            <img src="images/yellow.jpg" alt="yellow" data-delay="0s" class="yellow anim" width="400" height="300">
+            <p class="anim" data-delay=".5s">I have no clude wtf i am doing LAMO!</p>
+            <img data-delay=".7s" src="./images/squiggly.svg" height="100" width="200" alt="squig" class="squig anim">
+        </div>
+        <div class="right">
+            <div class="anim" data-delay="1s">
+                <h2>Get Yellow</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est officiis, consequatur laboriosam adipisci qui dignissimos reprehenderit labore quas quidem voluptas animi ducimus tempore cum ipsa distinctio expedita delectus aspernatur illum.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        const images = document.querySelectorAll(".anim");
+        let observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{             
+             if(entry.intersectionRatio > 0){
+                 entry.target.style.animation = `anim1 2s ${entry.target.dataset.delay} forwards ease-out`;
+             }else{
+                 entry.target.style.animation = `none`;
+             }
+            })
+
+         });
+
+         images.forEach(image=>{
+            observer.observe(image);
+         })
+         
+    </script>
+</body>
+</html>
